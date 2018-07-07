@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": ".eslintrc.js",
-  "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^5.0.1"
   },
