@@ -50,6 +50,11 @@ h1.logo {
     cursor: pointer;
 }
 
+.button:hover,
+.button.active {
+    background: rgb(179, 179, 179);
+}
+
 #results h3{
     margin: 0 auto;
 }
@@ -71,18 +76,6 @@ h1.logo {
     margin: 0 20px;
     padding: 5px;
     cursor: pointer;
-}
-
-.pages {
-    border-radius: 2px;
-    padding: 3px 6px;
-    margin: 0 3px;
-    background: rgb(139, 139, 139);
-}
-
-.pages:hover,
-.pages.active {
-    background: rgb(199, 199, 199);
 }
 
 @media(min-width: 650px) {

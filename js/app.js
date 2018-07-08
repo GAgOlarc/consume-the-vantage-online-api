@@ -48,7 +48,16 @@ function goLeft() {
 
     if (currentPage > 0) {
         currentPage--;
-        
+        if (currentPage === 0) {
+            leftArrow.style.cursor = 'not-allowed';
+            leftArrow.style.color = 'rgb(139, 139, 139)';
+        }
+
+        if (currentPage < 5) {
+            rightArrow.style.cursor = 'pointer';
+            rightArrow.style.color = 'black';
+        }
+
         allParagraph.forEach(paragraph => {
             paragraph.style.display = 'none';
         });
@@ -57,16 +66,25 @@ function goLeft() {
             allParagraph[i].style.display = 'block';
         }
 
-        contentBox.scrollTop = 0; 
+        contentBox.scrollTop = 0;
     }
 }
 
 function goRight() {
     const allParagraph = results.querySelectorAll('p');
-
+    
     if (currentPage < 5) {
         currentPage++;
-        
+        if (currentPage > 0) {
+            leftArrow.style.cursor = 'pointer';
+            leftArrow.style.color = 'black';
+        }
+
+        if (currentPage === 5) {
+            rightArrow.style.cursor = 'not-allowed';
+            rightArrow.style.color = 'rgb(139, 139, 139)';
+        }
+
         allParagraph.forEach(paragraph => {
             paragraph.style.display = 'none';
         });
@@ -75,11 +93,23 @@ function goRight() {
             allParagraph[i].style.display = 'block';
         }
 
-        contentBox.scrollTop = 0; 
+        contentBox.scrollTop = 0;
     }
 }
 
+function changeActiveButton(button) {
+    document.querySelectorAll('.button').forEach(button => button.classList.remove('active'));
+    button.classList.add('active');
+}
+
 function allData() {
+    changeActiveButton(getDataButton);
+
+    if (currentPage === 0) {
+        leftArrow.style.cursor = 'not-allowed';
+        leftArrow.style.color = 'rgb(139, 139, 139)';
+    }
+
     fetch(url, {
         method: 'GET',
         headers: {
@@ -102,6 +132,7 @@ function allData() {
 }
 
 function getSingleCustomer() {
+    changeActiveButton(singleCustomerButton);
     paginationDiv.style.opacity = 0;
 
     fetch(url, {
@@ -124,6 +155,7 @@ function getSingleCustomer() {
 }
 
 function getCustomers() {
+    changeActiveButton(customersButton);
     paginationDiv.style.opacity = 0;
 
     fetch(url, {
@@ -144,6 +176,7 @@ function getCustomers() {
 }
 
 function getEquipments() {
+    changeActiveButton(equipmentsButton);
     paginationDiv.style.opacity = 0;
 
     fetch(url, {
